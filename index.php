@@ -30,15 +30,24 @@ Flight::route('/title_ins_exe', function(){
 });
 
 // title_upd ##################################################
-Flight::route('/title_upd', function(){
-    $row = ORM::for_table('title')->find_one(Flight::request()->query->id);
+Flight::route('/title_upd/@id', function($id){
+    $row = ORM::for_table('title')->find_one($id);
     Flight::view()->assign("row",$row);
     Flight::view()->display("title_upd.tpl");
 });
 
+// title_upd_exe ##################################################
+Flight::route('/title_upd_exe', function(){
+	$result = ORM::for_table('title')->find_one(Flight::request()->data->id);
+	$title = Flight::request()->data->title;
+	$result->title = $title;
+	$result->save();
+	Flight::redirect('/title');
+});
+
 // thread_list ##################################################
-Flight::route('/thread', function(){
-    $id = Flight::request()->query->id;
+Flight::route('/thread/@id', function($id){
+    //$id = Flight::request()->query->id;
     $title_row = ORM::for_table('title')->find_one($id);
     Flight::view()->assign("title_row",$title_row);
 
@@ -60,9 +69,8 @@ Flight::route('/thread_ins_exe', function(){
 });
 
 // thread_upd ##################################################
-Flight::route('/thread_upd', function(){
-    $id = Flight::request()->query->id;
-    $row = ORM::for_table('thread')->find_one(Flight::request()->query->thread_id);
+Flight::route('/thread_upd/@id/@threadId', function($id,$threadId){
+    $row = ORM::for_table('thread')->find_one($threadId);
     Flight::view()->assign("id",$id);
     Flight::view()->assign("row",$row);
     Flight::view()->display("thread_upd.tpl");
@@ -73,14 +81,14 @@ Flight::route('/thread_upd_exe', function(){
 	$result = ORM::for_table('thread')->find_one(Flight::request()->data->thread_id);
 	$result->text = Flight::request()->data->text;
 	$result->save();
-	Flight::redirect('/thread?id=' . Flight::request()->data->id);
+	Flight::redirect('/thread/' . Flight::request()->data->id);
 });
 
 // thread_del ##################################################
-Flight::route('/thread_del', function(){
-	$result = ORM::for_table('thread')->find_one(Flight::request()->query->thread_id);
+Flight::route('/thread_del/@id/@threadId', function($id,$threadId){
+	$result = ORM::for_table('thread')->find_one($threadId);
 	$result->delete();
-	Flight::redirect('/thread?id=' . Flight::request()->query->id);
+	Flight::redirect('/thread/' . $id);
 });
 
 // smarty_test ##################################################

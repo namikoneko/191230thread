@@ -9,7 +9,9 @@
     </form>
 
     {foreach from=$rows item=row}
-    	<a href="thread/{$row.id}">{$row.title}</a><br>
+    	<a href="thread/{$row.id}">{$row.title}</a>
+    	<a href="title_upd/{$row.id}">update</a>
+	<br>
     	<!--<a href="thread?id={$row['id']}">{$row['title']}</a><br>-->
     {/foreach}
 </div><!--container-->

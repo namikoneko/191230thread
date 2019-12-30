@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 
 <div class="container">
-    <form action='thread_upd_exe' method='post'>
+    <form action='../../thread_upd_exe' method='post'>
 
 	<input type='hidden' name='id' value={$id}><br>
 	<input type='hidden' name='thread_id' value={$row.id}><br>
