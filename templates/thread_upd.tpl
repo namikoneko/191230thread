@@ -5,8 +5,8 @@
 
 	<input type='hidden' name='id' value={$id}><br>
 	<input type='hidden' name='thread_id' value={$row.id}><br>
-	<textarea class="form-control" name='text'>{$row.text}</textarea><br>
-	<input type='submit' class="form-control" value='send'>
+	<textarea class="myTextarea" name='text'>{$row.text}</textarea><br>
+	<input class="button button-primary" type='submit' value='send'>
 
     </form>
     <!--

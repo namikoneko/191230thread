@@ -13,6 +13,7 @@ Flight::register('view', 'Smarty', array(), function($smarty){
 	$smarty->template_dir = "./templates";
 	$smarty->compile_dir = "./templates_c";
 });
+//Flight::view()->assign("scriptName",dirname($_SERVER["SCRIPT_NAME"]));
 
 // title_list ##################################################
 Flight::route('/title', function(){
@@ -38,11 +39,13 @@ Flight::route('/title_upd/@id', function($id){
 
 // title_upd_exe ##################################################
 Flight::route('/title_upd_exe', function(){
-	$result = ORM::for_table('title')->find_one(Flight::request()->data->id);
-	$title = Flight::request()->data->title;
-	$result->title = $title;
-	$result->save();
-	Flight::redirect('/title');
+    $id = Flight::request()->data->id;
+    $result = ORM::for_table('title')->find_one($id);
+    $title = Flight::request()->data->title;
+    $result->title = $title;
+    $result->save();
+    //Flight::redirect('/title');
+    Flight::redirect('/thread/' . $id);
 });
 
 // thread_list ##################################################
@@ -65,7 +68,7 @@ Flight::route('/thread_ins_exe', function(){
     $result->text = Flight::request()->data->text;
     //$result->updated = time();
     $result->save();
-    Flight::redirect('/thread?id=' . $id);
+    Flight::redirect('/thread/' . $id);
 });
 
 // thread_upd ##################################################
@@ -82,6 +85,13 @@ Flight::route('/thread_upd_exe', function(){
 	$result->text = Flight::request()->data->text;
 	$result->save();
 	Flight::redirect('/thread/' . Flight::request()->data->id);
+});
+
+// title_del ##################################################
+Flight::route('/title_del/@id', function($id){
+	$result = ORM::for_table('title')->find_one($id);
+	$result->delete();
+	Flight::redirect('/title');
 });
 
 // thread_del ##################################################
