@@ -18,6 +18,7 @@
     	{$row.text}<br>
         <a class="" href="../thread_upd/{$title_row.id}/{$row.id}">update</a>
         <a class="" href="../thread_del/{$title_row.id}/{$row.id}">delete</a>
+        <a class="upLink" href="../thread_up/{$title_row.id}/{$row.id}">up</a>
     </div>
     {/foreach}
     <!--

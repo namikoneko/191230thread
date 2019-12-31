@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32-dev, created on 2019-12-31 10:10:09
+/* Smarty version 3.1.32-dev, created on 2019-12-31 11:21:57
   from "/Library/WebServer/Documents/php/xdomain/191215/templates/thread_list.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32-dev',
-  'unifunc' => 'content_5e0a9ff1e4a283_77579957',
+  'unifunc' => 'content_5e0ab0c5a02dc0_49208912',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '210d385b318f4a2af292b422ef70a4d2ad51c9d3' => 
     array (
       0 => '/Library/WebServer/Documents/php/xdomain/191215/templates/thread_list.tpl',
-      1 => 1577754466,
+      1 => 1577758900,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5e0a9ff1e4a283_77579957 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e0ab0c5a02dc0_49208912 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -58,6 +58,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
         <a class="" href="../thread_del/<?php echo $_smarty_tpl->tpl_vars['title_row']->value['id'];?>
 /<?php echo $_smarty_tpl->tpl_vars['row']->value['id'];?>
 ">delete</a>
+        <a class="upLink" href="../thread_up/<?php echo $_smarty_tpl->tpl_vars['title_row']->value['id'];?>
+/<?php echo $_smarty_tpl->tpl_vars['row']->value['id'];?>
+">up</a>
     </div>
     <?php
 }
